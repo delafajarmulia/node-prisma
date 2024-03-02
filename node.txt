@@ -1,0 +1,19 @@
+install
+
+npm install dotenv
+npm init
+npm install express cors prisma
+npm install nodemon
+npx prisma init --datasource-provider sqlite
+
+for db
+- make model in .prisma
+- npx prisma generate
+- npx prisma migrate dev // gak pake ini dulu
+- npx prisma db push
+
+npx prisma studio
+
+orm : object relational maping
+
+orm -> yg negbantu kita untuk connect ke db
