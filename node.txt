@@ -17,3 +17,11 @@ npx prisma studio
 orm : object relational maping
 
 orm -> yg negbantu kita untuk connect ke db
+
+jangan jadiin satu file
+- index.js jadiin configurasi awal dan middleware
+- "/product" -> endpoint
+- sdngkan yg didalemnya itu controllernya logic harusnya di masukin service
+- prisma.product.unique dll harusnya masuk repository / lay
+
+boleh dijadiin per folder controller, repository, service didlm src ataupun di perfitur kayak di db -> product, user, dll
