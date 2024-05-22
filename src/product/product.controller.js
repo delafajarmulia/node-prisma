@@ -1,7 +1,6 @@
 // layer untuk handle request & response
 // handle vallidasi body
 const express = require('express')
-const prisma = require("../db/index")
 const response = require("../response")
 const { getAllProducts, getProductById, createProduct, deleteProductById, editProductById } = require('./product.service')
 

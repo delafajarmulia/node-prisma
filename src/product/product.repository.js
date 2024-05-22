@@ -4,7 +4,11 @@
 const prisma = require("../db/index")
 
 const findProduct = async() => {
-    const product = await prisma.product.findMany()
+    const product = await prisma.product.findMany({
+        include: {
+            category: true,
+        },
+    })
     return product
 }
 
@@ -12,6 +16,9 @@ const findProductById = async(id) => {
     const product = await prisma.product.findUnique({
         where:{
             id: id,
+        },
+        include: {
+            category: true,
         },
     })
     return product
@@ -21,6 +28,9 @@ const findProductByName = async(name) => {
     const product = await prisma.product.findFirst({
         where:{
             name:name,
+        },
+        include: {
+            category: true,
         },
     })
     return product

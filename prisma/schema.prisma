@@ -13,10 +13,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  products    Product[]
+}
+
 model Product {
-  id          Int @id @default(autoincrement()) 
+  id          Int       @id @default(autoincrement()) 
+  categoryId  Int
+  category    Category  @relation(fields: [categoryId], references: [id])
   name        String
   price       Int
   description String
   image       String
+}
+
+model User{
+  id          Int       @id @default(autoincrement())
+  name        String
+  password    String
 }

@@ -1,6 +1,5 @@
 // service tujuannya untuk heandle bussiness logic 
 // spy tanggung jawabnya ter isolate dan function nya reusable
-const prisma = require("../db/index")
 const { findProduct, findProductById, insertProduct, editProduct } = require("./product.repository")
 
 const getAllProducts = async() => {
