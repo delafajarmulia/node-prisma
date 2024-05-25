@@ -34,9 +34,22 @@ const insertCategory = async (newDataCategory) => {
     return category
 }
 
+const editCategory = async(id, categoryData) => {
+    const category = await prisma.category.update({
+        where:{
+            id:id,
+        },
+        data:{
+            name: categoryData.name,
+        },
+    })
+    return category
+}
+
 module. exports = {
     findCategories,
     findCategoryById,
     findCategoryByName,
-    insertCategory
+    insertCategory,
+    editCategory
 }

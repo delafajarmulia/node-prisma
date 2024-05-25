@@ -1,4 +1,4 @@
-const { findCategories, findCategoryById, findCategoryByName, insertCategory } = require("./category.repository")
+const { findCategories, findCategoryById, findCategoryByName, insertCategory, editCategory } = require("./category.repository")
 
 const getAllCategories = async() => {
     const categories = await findCategories()
@@ -24,8 +24,15 @@ const createCategory = async (newDataCategory) => {
     return newCategory
 }
 
+const updateCategory = async(id, categoryData) =>  {
+    await getCategoryById(id)
+
+    return await editCategory(id, categoryData)
+}
+
 module.exports = {
     getAllCategories,
     getCategoryById,
-    createCategory
+    createCategory,
+    updateCategory
 }

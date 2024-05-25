@@ -11,6 +11,9 @@ router.get("/", async (req, res) => {
     // prisma.$executeRaw("SELECT * FROM product") ini kalo mau pake manual
     // res.send(products)
     const products = await getAllProducts()
+    if(!products){
+        response(400, res, "products not found", res)
+    }
     response(200, products, "success get all data", res)
 })
 
@@ -19,7 +22,7 @@ router.get("/:id", async (req, res) => {
         const productId = parseInt(req.params.id)
 
         if(typeof productId !== "number"){
-            throw Error("ID is not a number")
+            return response(400, newProductData, "Id must be a number", res)
         }
         
         const product = await getProductById(productId)
@@ -33,6 +36,13 @@ router.get("/:id", async (req, res) => {
 router.post("/", async(req, res) => {
     try {
         const newProductData = req.body
+        const categoryId = newProductData.categoryId
+        if(typeof categoryId !== "number" || typeof newProductData.price !== "number"){
+            return response(400, newProductData, "price and category Id must be a number", res)
+        } else if (newProductData.name ==="" || newProductData.price ==="" || newProductData.categoryId ===""){
+            return response(400, newProductData, "name, price, and categoryId must be available", res)
+        }
+
         const product = await createProduct(newProductData)
     
         response(201, product, "success add data", res)

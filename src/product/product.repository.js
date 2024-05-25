@@ -42,7 +42,8 @@ const insertProduct = async(newDataProduct) => {
             name: newDataProduct.name,
             price: newDataProduct.price,
             description: newDataProduct.description,
-            image:newDataProduct.image,
+            image:  newDataProduct.image,
+            categoryId: newDataProduct.categoryId,
         },
     })
 
